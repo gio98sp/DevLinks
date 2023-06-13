@@ -15,6 +15,7 @@
   --surface-color: rgba(255, 255, 255, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --switch-bg-url: url(./assets/moon-stars.svg);
+  --highlight-color: rgba(255, 255, 255, 0.5);
 }
 
 .light {
@@ -24,6 +25,7 @@
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --switch-bg-url: url(./assets/sun.svg);
+  --highlight-color: rgba(0, 0, 0, 0.1);
 }
 
 html {
@@ -62,19 +64,6 @@ body {
   margin: 0 auto;
 }
 
-#switch button {
-  width: 32px;
-  height: 32px;
-  background: var(--switch-bg-url) #fff no-repeat center;
-  border: 0;
-  border-radius: 50%;
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-}
-
 #switch span {
   display: block;
   width: 64px;
@@ -86,9 +75,26 @@ body {
   border-radius: 25px;
 }
 
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: var(--switch-bg-url) #fff no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  animation: slide-out .4s;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
+}
+
 .light #switch button {
-  left: initial;
-  right: 0;
+  animation: slide-in .4s forwards;
 }
 
 ul {
@@ -137,5 +143,23 @@ ul li i {
 
   .light {
     --bg-url: url(./assets/bg-desktop-light.png);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
