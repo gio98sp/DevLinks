@@ -35,7 +35,8 @@ body {
 }
 
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   margin: 56px auto 0;
   padding: 0 25px;
 }
@@ -98,15 +99,16 @@ ul {
 }
 
 ul li a {
-  border: 1px solid var(--stroke-color);
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 15px 0 15px 70px;
-  background: var(--surface-color);
+  padding: 15px;
+  font-weight: bold;
+  border: 1px solid var(--stroke-color);
   border-radius: 8px;
+  background: var(--surface-color);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  font-weight: bold;
   transition: 0.3s;
 }
 
@@ -126,4 +128,14 @@ ul li i {
   align-items: center;
   margin: 50px 0;
   gap: 5px;
+}
+
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./assets/bg-desktop-dark.jpg);
+  }
+
+  .light {
+    --bg-url: url(./assets/bg-desktop-light.png);
+  }
 }
